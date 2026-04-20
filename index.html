@@ -164,6 +164,10 @@ section.page {
 }
 @media (max-width: 768px) {
   section.page { padding: 5rem 0; }
+  .container { padding: 0 1.5rem; }
+}
+@media (max-width: 420px) {
+  .container { padding: 0 1.25rem; }
 }
 
 .eyebrow {
@@ -251,13 +255,15 @@ section.page {
 }
 
 .hero-title {
-  font-size: var(--fs-hero);
-  line-height: 1.05;
+  font-size: clamp(2rem, 7.5vw, 5.75rem);
+  line-height: 1.08;
   letter-spacing: -0.04em;
   font-weight: 800;
   color: var(--ink);
-  max-width: 18ch;
   margin-bottom: 2rem;
+}
+@media (min-width: 900px) {
+  .hero-title { max-width: 18ch; }
 }
 .hero-title .highlight { color: var(--accent); }
 
@@ -1063,26 +1069,26 @@ section.page {
 
   <p class="hero-sub reveal d2">
     한화오션 방산 엔지니어로 <strong>3년 4개월</strong>, 대치동 입시 컨설턴트로 <strong>4년</strong>.
-    두 달 전 Claude·Gemini·ChatGPT를 코딩 파트너로 삼은 뒤 <strong>세 개의 실제 프로덕트</strong>를
+    Claude·Gemini·ChatGPT를 코딩 파트너로 삼아 <strong>세 개의 실제 프로덕트</strong>를
     단독으로 만들어 지금도 운영 중입니다.
   </p>
 
   <div class="hero-stats reveal d3">
     <div>
       <div class="hero-stat-val">3</div>
-      <div class="hero-stat-label">Production<br>Products</div>
-    </div>
-    <div>
-      <div class="hero-stat-val">46,771</div>
-      <div class="hero-stat-label">Lines<br>of Code</div>
+      <div class="hero-stat-label">Live<br>Products</div>
     </div>
     <div>
       <div class="hero-stat-val">100<span class="unit">+</span></div>
-      <div class="hero-stat-label">Concurrent<br>Users · Live</div>
+      <div class="hero-stat-label">Concurrent<br>Users</div>
     </div>
     <div>
-      <div class="hero-stat-val">970</div>
-      <div class="hero-stat-label">TOEIC<br>2025.06</div>
+      <div class="hero-stat-val">43</div>
+      <div class="hero-stat-label">PostgreSQL<br>RPC Functions</div>
+    </div>
+    <div>
+      <div class="hero-stat-val">4</div>
+      <div class="hero-stat-label">LLM Providers<br>Integrated</div>
     </div>
   </div>
 
@@ -1133,16 +1139,37 @@ section.page {
 
       <article class="timeline-item reveal">
         <div class="timeline-meta">
+          <span class="period">2018.03 — 2022.04</span>
+          <span class="duration">4년 (중퇴)</span>
+        </div>
+        <h3 class="timeline-title">새 분야에서 수석까지</h3>
+        <div class="timeline-subtitle">한서대학교 항공운항학과 · 학점은행제 경영학과 병행</div>
+        <div class="timeline-body">
+          <p>
+            한화오션 퇴사 후 한서대학교 항공운항학과에 입학해 3학년 1학기까지 수료했습니다.
+            5개 학기 동안 학점 4.36 / 전체 석차 1위를 유지하며 교내 성적장학금 수석을 4회 수상했고,
+            한국장학재단 이공계장학금(전액)도 받았습니다. 같은 시기 학점은행제 경영학과를 병행해
+            2023년 학점 3.98로 졸업했습니다.
+          </p>
+          <p class="emph">
+            새로운 분야에 뛰어들어 빠르게 최상위 수준까지 끌어올리는 방식 —
+            지금 AI Native 전환에서 같은 패턴이 다시 작동하고 있습니다.
+          </p>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
           <span class="period">2022.04 — Present</span>
           <span class="duration">4년+</span>
         </div>
-        <h3 class="timeline-title">컴플레인 제로의 대면 컨설팅</h3>
+        <h3 class="timeline-title">수백 명 단위의 대면 컨설팅</h3>
         <div class="timeline-subtitle">대치동 입시 컨설팅 · 프리랜서 컨설턴트</div>
         <div class="timeline-body">
           <p>
             매년 바뀌는 입시제도 안에서 매 시즌 수백 명의 학생·학부모를 대면 컨설팅했습니다.
             사전 설문 → 대면 상담 → 후속 관리 → 파이널 콜까지 이어지는 약 1달짜리 프로세스를
-            수 년간 안정적으로 운영했고, 컴플레인 없이 완수했습니다.
+            수 년간 안정적으로 운영했습니다.
           </p>
           <p>
             이 환경에서 가장 깊이 배운 것은 <strong>고객이 요청한 것과 실제로 필요한 것이
@@ -1165,18 +1192,18 @@ section.page {
         <div class="timeline-subtitle">AI 풀스택 · 에듀테크 스타트업 · 프리랜서</div>
         <div class="timeline-body">
           <p>
-            코딩을 본격적으로 시작한 건 두 달 전입니다. 방산 엔지니어링에서 익힌 구조적 사고,
-            4년간의 B2C 컨설팅에서 길러진 고객 감각 위에 Claude·Gemini·ChatGPT를 코딩 파트너로
-            얹자, 짧은 시간에 세 개의 실제 프로덕트가 나왔습니다.
+            최근 AI를 개발 파트너로 본격 활용하기 시작했습니다. 방산 엔지니어링에서 익힌
+            구조적 사고, 4년간의 B2C 컨설팅에서 길러진 고객 감각 위에
+            Claude·Gemini·ChatGPT를 코딩 파트너로 얹자, 짧은 기간 안에 세 개의 실제
+            프로덕트가 나왔습니다.
           </p>
           <p class="emph">
-            정통 개발자 경력은 길지 않지만, 그 자리를 채우는 것은 학습 속도와, 만들 가치가 있는 것을 판단하는 눈입니다.
+            빠른 실행을 만드는 것은 학습 속도와, 만들 가치가 있는 것을 판단하는 눈입니다.
           </p>
           <p>
-            "어떻게 만드는가"는 이미 AI가 상당 부분 해결했습니다. 진짜 가치는
-            <strong>"무엇을 만들어야 의미가 있는가"</strong>를 판단하는 눈에서 옵니다.
-            방산에서는 국방과학연구소까지 가는 보고 구조를, 대치동에서는 매 시즌 수백 명의
-            의사결정 상황을 — 저는 정확히 그 판단력을 훈련해왔습니다.
+            AI는 구현 속도를 크게 높여주지만, <strong>무엇을 만들고 어떤 구조로 운영할지</strong>는
+            여전히 사람의 판단 영역입니다. 방산에서는 국방과학연구소까지 가는 보고 구조를,
+            대치동에서는 매 시즌 수백 명의 의사결정 상황을 — 저는 정확히 그 판단력을 훈련해왔습니다.
           </p>
         </div>
       </article>
@@ -1191,7 +1218,7 @@ section.page {
     <div class="about-intro">
       <div class="eyebrow reveal"><span class="eyebrow-num">02</span> Work</div>
       <h2 class="section-title reveal d1">
-        짧은 시간에 만든,<br>
+        직접 설계하고, 배포하고, 운영한<br>
         <span class="highlight">세 개의 실제 프로덕트</span>
       </h2>
       <p class="section-lede reveal d2">
@@ -1238,7 +1265,7 @@ section.page {
           </div>
           <div class="metric">
             <span class="metric-val">$25<span class="unit">/mo</span></span>
-            <span class="metric-label">Infra Cost</span>
+            <span class="metric-label">Lean Production<br>Infra</span>
           </div>
         </div>
 
@@ -1296,7 +1323,7 @@ section.page {
         <p class="project-lede">
           Gemini(영상 분석) + Claude·GPT(스크립트·키워드) + Perplexity(팩트 체크) + Google TTS·ElevenLabs(음성 합성)를
           하나의 파이프라인으로 엮은 크로스 플랫폼(Win + macOS) 데스크톱 앱. 의도적으로 <strong>human touch</strong>를
-          넣은 Human-in-the-loop 설계로 플랫폼 제재 리스크를 관리한 점이 클라이언트의 핵심 가치로 평가받았습니다.
+          넣은 Human-in-the-loop 설계로 플랫폼 제재 리스크를 관리한 점이 클라이언트가 특히 높게 평가한 설계 포인트였습니다.
         </p>
 
         <div class="project-metrics">
@@ -1324,8 +1351,8 @@ section.page {
             완전 자동화로 만들 수도 있었습니다. 그러나 YouTube·플랫폼 정책은 '완전 자동 생성' 컨텐츠를
             점점 강하게 제재하는 방향으로 움직이고 있었습니다. 클라이언트의 계정과 채널을 지키려면
             <strong>사람의 편집 개입 지점을 의도적으로 남기는 것</strong>이 장기적으로 더 나은 설계였습니다.
-            "자동화를 덜 했다"가 아니라, "리스크를 전가하지 않고 나눠 가진다"는 설계 철학이었고,
-            이 점이 클라이언트에게 가장 큰 가치로 평가받았습니다.
+            "자동화를 덜 했다"가 아니라 "리스크를 전가하지 않고 나눠 가진다"는 설계 철학이었고,
+            이 부분을 클라이언트가 특히 높게 평가했습니다.
           </p>
 
           <h4>Multi-LLM Orchestration</h4>
@@ -1410,7 +1437,7 @@ section.page {
           <h4>Why Apify?</h4>
           <p>
             Instagram·TikTok은 공식 API가 극히 제한적이거나 상업용 크롤링을 금지합니다.
-            Apify는 관리형 크롤링 서비스로 법적·기술적 복잡도를 외주화해주고,
+            Apify는 관리형 크롤링 서비스로 구현·운영 복잡도를 낮추고,
             <code>apify~instagram-post-scraper</code>와 <code>clockworks~free-tiktok-scraper</code>
             같은 검증된 actor들을 바로 조합할 수 있습니다.
           </p>
@@ -1503,8 +1530,8 @@ section.page {
     <div class="comm-header">
       <h3 class="reveal">정량적 커뮤니케이션 자산</h3>
       <p class="reveal d1">
-        "잘한다"가 아니라 측정 가능한 자산입니다. 영어 시험 점수, 대면 컨설팅 건수, 컴플레인 수,
-        리텐션 지표 — 수 년에 걸쳐 쌓인 정량적 근거가 있습니다.
+        "잘한다"가 아니라 측정 가능한 자산입니다. 영어 시험 점수, 대면 컨설팅 건수, 리텐션 지표,
+        학업 성취 — 수 년에 걸쳐 쌓인 정량적 근거가 있습니다.
       </p>
     </div>
 
@@ -1522,8 +1549,8 @@ section.page {
         <span class="comm-stat-v">4년 · 수백명/시즌</span>
       </div>
       <div class="comm-stat">
-        <span class="comm-stat-k">컴플레인</span>
-        <span class="comm-stat-v">0건</span>
+        <span class="comm-stat-k">리텐션</span>
+        <span class="comm-stat-v">재등록 · 지인 추천</span>
       </div>
       <div class="comm-stat">
         <span class="comm-stat-k">한서대 학점</span>
@@ -1555,9 +1582,10 @@ section.page {
           맞물릴 수 있는 자리를 찾고 있습니다.
         </p>
         <p>
-          빠르게 움직이는 팀에서 비즈니스 임팩트가 명확한 문제를 정의하고, AI 도구로 빠르게 만들고,
-          실제 사용자가 쓸 수 있을 때까지 운영하는 일. 엔지니어·PO·운영자를 한 사람으로 묶는 역할이
-          가장 잘 맞습니다.
+          빠르게 움직이는 팀에서 <strong>문제를 정의하고, AI 도구로 빠르게 구현하고,
+          실제 사용자 환경에서 운영 가능한 형태로 정착시키는 역할</strong>이 가장 잘 맞습니다.
+          엔지니어링·PO·운영 어느 하나로 이름 붙이기보다, 세 역할을 한 사람이 연결해서
+          끝까지 책임지는 자리를 찾고 있습니다.
         </p>
         <p>
           기획자 없이 기획·설계·개발·배포·운영까지 단독으로 수행한 경험이 그대로 자산이 됩니다.
@@ -1613,7 +1641,7 @@ section.page {
       </div>
       <div class="contact-item">
         <span class="contact-label">Open to</span>
-        <span class="contact-value">AI 엔지니어 · Product Owner · 풀스택</span>
+        <span class="contact-value">AI 엔지니어 · 풀스택 · Product Owner</span>
       </div>
     </div>
 
