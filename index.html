@@ -776,7 +776,7 @@ section.page {
 
 .project-metrics {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 2.5rem 0;
   border: 1px solid var(--hairline);
   border-radius: 16px;
@@ -784,9 +784,9 @@ section.page {
   background: var(--bg);
 }
 @media (max-width: 720px) {
-  .project-metrics { grid-template-columns: repeat(2, 1fr); }
-  .project-metrics .metric:nth-child(2n) { border-right: none !important; }
-  .project-metrics .metric:nth-child(-n+2) { border-bottom: 1px solid var(--hairline); }
+  .project-metrics { grid-template-columns: 1fr; }
+  .project-metrics .metric { border-right: none !important; border-bottom: 1px solid var(--hairline); }
+  .project-metrics .metric:last-child { border-bottom: none; }
 }
 .metric {
   padding: 2rem 1.5rem 1.75rem;
