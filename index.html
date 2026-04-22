@@ -27,9 +27,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<!-- Pretendard · dynamic subset first (smaller, faster), full variable as fallback -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+
+<!-- Three.js · lazy loaded for Hero WebGL particle network (tier 4-H) -->
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 
 <!-- Canonical & SEO -->
 <link rel="canonical" href="https://hoon7624g-web.github.io/portfolio/">
@@ -38,60 +44,127 @@
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
 <meta name="format-detection" content="telephone=no">
 
-<!-- Favicon (inline SVG · 점 마크) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ccircle cx='11' cy='16' r='3.5' fill='%23fafafa'/%3E%3Ctext x='18' y='21' font-family='system-ui,-apple-system,sans-serif' font-size='12' font-weight='700' fill='%23fafafa'%3EY%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230a0a0a'/%3E%3Ccircle cx='62' cy='90' r='20' fill='%23fafafa'/%3E%3Ctext x='100' y='118' font-family='system-ui,-apple-system,sans-serif' font-size='68' font-weight='700' fill='%23fafafa'%3EY%3C/text%3E%3C/svg%3E">
+<!-- Favicon · multi-format for best platform support -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ccircle cx='11' cy='16' r='3.5' fill='%23fafafa'/%3E%3Ctext x='18' y='21' font-family='system-ui,-apple-system,sans-serif' font-size='12' font-weight='700' fill='%23fafafa'%3EY%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="/portfolio/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/portfolio/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/portfolio/apple-touch-icon.png">
+<link rel="manifest" href="/portfolio/site.webmanifest">
 
-<!-- JSON-LD · Person + CreativeWork (포트폴리오) -->
+<!-- JSON-LD · ProfilePage + Person + CreativeWork list -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "윤상훈",
-  "givenName": "Sanghoon",
-  "familyName": "Yoon",
-  "alternateName": "Hoon Yoon",
-  "jobTitle": "AI 빌더 · AI 엔지니어 · AX 강사",
-  "description": "기획자 없이 제품을 만들고, 현장의 언어로 전달합니다. AI 프로덕트 3개를 단독으로 설계·배포했고, 그중 하나를 직접 운영 중인 풀스택 엔지니어.",
-  "email": "hoon7624g@gmail.com",
-  "telephone": "+82-10-2765-7624",
-  "url": "https://hoon7624g-web.github.io/portfolio/",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Seoul",
-    "addressCountry": "KR"
-  },
-  "knowsLanguage": ["ko", "en"],
-  "knowsAbout": [
-    "AI Engineering",
-    "AI Automation",
-    "No-code Workflow Builder",
-    "Large Language Models",
-    "React",
-    "TypeScript",
-    "Supabase",
-    "PostgreSQL",
-    "Electron",
-    "Full-stack Development",
-    "AX Education",
-    "Technical Communication"
-  ],
-  "hasOccupation": {
-    "@type": "Occupation",
-    "name": "AI 빌더 · AI 엔지니어 · AX 강사",
-    "occupationalCategory": "15-1252"
-  },
-  "alumniOf": [
-    {
-      "@type": "EducationalOrganization",
-      "name": "한서대학교",
-      "department": "항공운항학과"
+  "@type": "ProfilePage",
+  "dateCreated": "2026-01-01",
+  "dateModified": "2026-04-22",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://hoon7624g-web.github.io/portfolio/#person",
+    "name": "윤상훈",
+    "givenName": "Sanghoon",
+    "familyName": "Yoon",
+    "alternateName": "Hoon Yoon",
+    "jobTitle": "AI 빌더 · AI 엔지니어 · AX 강사",
+    "description": "기획자 없이 제품을 만들고, 현장의 언어로 전달합니다. AI 프로덕트 3개를 단독으로 설계·배포했고, 그중 하나를 직접 운영 중인 풀스택 엔지니어.",
+    "email": "hoon7624g@gmail.com",
+    "telephone": "+82-10-2765-7624",
+    "url": "https://hoon7624g-web.github.io/portfolio/",
+    "image": "https://hoon7624g-web.github.io/portfolio/og-image.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Seoul",
+      "addressCountry": "KR"
+    },
+    "knowsLanguage": ["ko", "en"],
+    "knowsAbout": [
+      "AI Engineering",
+      "AI Automation",
+      "No-code Workflow Builder",
+      "Large Language Models",
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Electron",
+      "Full-stack Development",
+      "AX Education",
+      "Technical Communication"
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "AI 빌더 · AI 엔지니어 · AX 강사",
+      "occupationalCategory": "15-1252"
+    },
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "한서대학교",
+        "department": "항공운항학과"
+      }
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    },
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "AI 프로덕트 빌딩 · AI 워크플로 자동화 · AX 강의",
+        "serviceType": "Technology Consulting"
+      }
     }
-  ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Freelance · 에듀테크 스타트업"
   }
+}
+</script>
+
+<!-- JSON-LD · CreativeWork list (3 shipped AI products) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Shipped AI Products by Sanghoon Yoon",
+  "itemListOrder": "Ascending",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "실시간 매칭 웹앱",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Browser",
+        "description": "React 19 + TypeScript + Supabase 기반 실시간 매칭·투표·피드백·어드민 운영 제어 웹앱. 100명+ 동시 접속 환경 Realtime + 폴링 하이브리드 아키텍처.",
+        "author": { "@id": "https://hoon7624g-web.github.io/portfolio/#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "멀티 AI 영상 제작 데스크톱 앱",
+        "applicationCategory": "DesktopApplication",
+        "operatingSystem": "Windows, macOS",
+        "description": "Electron 40 + Remotion + Gemini/Claude/GPT/Perplexity + TTS 멀티 LLM 파이프라인. Human-in-the-loop 설계로 플랫폼 제재 리스크 관리.",
+        "author": { "@id": "https://hoon7624g-web.github.io/portfolio/#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "SNS 트렌드 데이터 수집·분석 데스크톱 앱",
+        "applicationCategory": "DesktopApplication",
+        "operatingSystem": "Windows, macOS",
+        "description": "Electron 40 + Supabase Edge Functions BFF 프록시 아키텍처. Instagram·TikTok·샤오홍슈 3개 플랫폼 트렌드 수집, 클라이언트 번들에 API 키 노출 방지 구조.",
+        "author": { "@id": "https://hoon7624g-web.github.io/portfolio/#person" }
+      }
+    }
+  ]
 }
 </script>
 
@@ -150,6 +223,64 @@
   --space-10: 8rem;      /* 128px */
   --space-11: 10rem;     /* 160px */
   --space-12: 12rem;     /* 192px */
+
+  /* ── Easing tokens (Rauno Freiberg style) · tier 4-X ── */
+  --ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);      /* 부드러운 감속 */
+  --ease-out-expo:  cubic-bezier(0.19, 1, 0.22, 1);     /* 강한 감속 */
+  --ease-smooth:    cubic-bezier(0.22, 1, 0.36, 1);     /* 표준 smooth */
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);  /* 살짝 튕김 */
+
+  /* ── Derived tokens (dark-mode reactive) · K tier ── */
+  --grid-line: rgba(10, 10, 10, 0.04);
+  --noise-blend: multiply;
+  --shadow-ink: 10, 10, 10;
+}
+
+/* ═══════════════════════════════════════════════════
+   DARK MODE · auto via prefers-color-scheme OR manual via [data-theme]
+═══════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:            #0a0a0a;
+    --surface:       #141416;
+    --surface-alt:   #1c1c1f;
+    --ink:           #fafafa;
+    --ink-2:         #d4d4d3;
+    --ink-3:         #a3a3a3;
+    --ink-4:         #737373;
+    --ink-5:         #525252;
+    --hairline:      #262626;
+    --hairline-dark: #3a3a3a;
+    --accent:        #60a5fa;
+    --accent-hover:  #93c5fd;
+    --accent-soft:   rgba(96, 165, 250, 0.12);
+    --dark-bg:       #000000;
+    --dark-bg-2:     #0a0a0a;
+    --grid-line:     rgba(250, 250, 250, 0.05);
+    --noise-blend:   screen;
+    --shadow-ink:    0, 0, 0;
+  }
+}
+/* Manual override — wins over prefers-color-scheme */
+:root[data-theme="dark"] {
+  --bg:            #0a0a0a;
+  --surface:       #141416;
+  --surface-alt:   #1c1c1f;
+  --ink:           #fafafa;
+  --ink-2:         #d4d4d3;
+  --ink-3:         #a3a3a3;
+  --ink-4:         #737373;
+  --ink-5:         #525252;
+  --hairline:      #262626;
+  --hairline-dark: #3a3a3a;
+  --accent:        #60a5fa;
+  --accent-hover:  #93c5fd;
+  --accent-soft:   rgba(96, 165, 250, 0.12);
+  --dark-bg:       #000000;
+  --dark-bg-2:     #0a0a0a;
+  --grid-line:     rgba(250, 250, 250, 0.05);
+  --noise-blend:   screen;
+  --shadow-ink:    0, 0, 0;
 }
 
 html {
@@ -187,7 +318,7 @@ body::before {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.035;
-  mix-blend-mode: multiply;
+  mix-blend-mode: var(--noise-blend);
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 200px 200px;
 }
@@ -228,6 +359,31 @@ a { color: inherit; text-decoration: none; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Skip link · visible only when focused · a11y keyboard users */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10001;
+  padding: 0.65rem 1.1rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 0.24s var(--ease-smooth, ease);
+  box-shadow: 0 8px 20px -8px rgba(var(--shadow-ink, 10, 10, 10), 0.35);
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* Tier 5-3: focus-visible 일관 스타일 (키보드 내비게이션) */
@@ -291,11 +447,25 @@ section[id] { scroll-margin-top: 5rem; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 1.25rem 0;
-  background: rgba(250, 250, 250, 0.82);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  /* Fallback: opaque surface-ish */
+  background: var(--bg);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease, background 0.3s ease;
+}
+/* When backdrop-filter is supported: use translucent bg for premium glass effect */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header {
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+}
+/* color-mix() fallback (for browsers that support backdrop but not color-mix) */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) and (not (background: color-mix(in srgb, white, transparent))) {
+  .header { background: rgba(250, 250, 250, 0.82); }
+  @media (prefers-color-scheme: dark) {
+    .header { background: rgba(10, 10, 10, 0.82); }
+  }
 }
 .header.scrolled { border-bottom-color: var(--hairline); }
 .header-inner {
@@ -305,6 +475,52 @@ section[id] { scroll-margin-top: 5rem; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Theme toggle button · manual dark/light override */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 0.75rem;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink-3);
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.28s var(--ease-smooth),
+    color 0.28s var(--ease-smooth),
+    border-color 0.28s var(--ease-smooth),
+    transform 0.4s var(--ease-spring);
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-5);
+  transform: translateY(-1px);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+.theme-toggle .sun-icon { display: none; }
+.theme-toggle .moon-icon { display: block; }
+/* In dark mode (auto or manual), flip icons */
+:root[data-theme="dark"] .theme-toggle .sun-icon,
+:root[data-theme="dark"] .theme-toggle .moon-icon { /* overridden below */ }
+:root[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+:root[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .sun-icon { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .moon-icon { display: none; }
+}
+@media (max-width: 560px) {
+  .theme-toggle { width: 32px; height: 32px; margin-left: 0.5rem; }
+  .theme-toggle svg { width: 14px; height: 14px; }
 }
 .header-brand {
   display: flex;
@@ -441,8 +657,8 @@ section.page {
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(to right, rgba(10, 10, 10, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(10, 10, 10, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 40%, transparent 90%);
   -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 40%, transparent 90%);
@@ -461,6 +677,30 @@ section.page {
 }
 
 /* ═══════════════════════════════════════════════════
+   HERO WEBGL PARTICLE NETWORK — 4th layer (tier 4-H)
+═══════════════════════════════════════════════════ */
+.hero-webgl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out-quart);
+  mask-image: radial-gradient(ellipse 80% 70% at 35% 45%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 35% 45%, black 20%, transparent 85%);
+}
+.hero-webgl.ready { opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-webgl { display: none !important; }
+}
+@media (max-width: 720px) {
+  .hero-webgl { display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════
    HERO ARCHITECTURE SIGNATURE — 3rd layer (tier 4-10)
 ═══════════════════════════════════════════════════ */
 .hero-signature {
@@ -472,13 +712,14 @@ section.page {
   pointer-events: none;
   opacity: 0.75;
   overflow: visible;
+  color: var(--accent); /* Used via currentColor in child elements for dark-mode reactivity */
   mask-image: radial-gradient(ellipse 70% 60% at 35% 40%, black 50%, transparent 92%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 35% 40%, black 50%, transparent 92%);
 }
-.hero-signature .node-stroke { fill: none; stroke: rgba(29, 78, 216, 0.22); stroke-width: 1.5; }
-.hero-signature .node-center { fill: rgba(29, 78, 216, 0.35); }
-.hero-signature .link-static { fill: none; stroke: rgba(29, 78, 216, 0.12); stroke-width: 1; }
-.hero-signature .link-flow   { fill: none; stroke: rgba(29, 78, 216, 0.22); stroke-width: 1; stroke-dasharray: 4 6; animation: hero-sig-flow 10s linear infinite; }
+.hero-signature .node-stroke { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.35; }
+.hero-signature .node-center { fill: currentColor; opacity: 0.5; }
+.hero-signature .link-static { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.2; }
+.hero-signature .link-flow   { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.35; stroke-dasharray: 4 6; animation: hero-sig-flow 10s linear infinite; }
 
 @keyframes hero-sig-flow {
   from { stroke-dashoffset: 0; }
@@ -520,7 +761,7 @@ section.page {
 .hero-title {
   font-size: clamp(1.75rem, 7vw, 5.75rem);
   line-height: 1.1;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   font-weight: 800;
   color: var(--ink);
   margin-bottom: 2rem;
@@ -592,7 +833,11 @@ section.page {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.28s var(--ease-smooth),
+    color 0.28s var(--ease-smooth),
+    transform 0.4s var(--ease-spring),
+    border-color 0.28s var(--ease-smooth);
   cursor: pointer;
   border: 1px solid transparent;
 }
@@ -1040,6 +1285,19 @@ section.page {
   max-width: 100%;
 }
 
+/* Pipeline / flow indicator — subtle moving dashes on key arrows */
+.arch-diagram svg .arch-line-flow {
+  stroke-dasharray: 4 3;
+  animation: arch-flow 2s linear infinite;
+}
+@keyframes arch-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -14; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-diagram svg .arch-line-flow { animation: none; stroke-dasharray: none; }
+}
+
 /* SVG text 품질 강화 — 폰트 fallback 강제, 렌더링 정교화 */
 .arch-diagram svg text,
 .arch-diagram--craft svg text {
@@ -1168,59 +1426,6 @@ section.page {
 }
 
 .craft-intro { margin-bottom: 4rem; }
-
-.models {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 5rem;
-}
-@media (max-width: 1100px) { .models { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .models { grid-template-columns: 1fr; } }
-
-.model {
-  padding: 2rem 1.75rem;
-  background: var(--bg);
-  border: 1px solid var(--hairline);
-  border-radius: 16px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.model:hover {
-  transform: translateY(-3px);
-  border-color: var(--ink-5);
-}
-.model-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-.model:nth-child(1) .model-dot { background: #8b5cf6; }
-.model:nth-child(2) .model-dot { background: #3b82f6; }
-.model:nth-child(3) .model-dot { background: #10b981; }
-.model:nth-child(4) .model-dot { background: #d1952e; }
-
-.model-vendor {
-  font-family: var(--display);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 0.4rem;
-}
-.model-name {
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-}
-.model-role {
-  font-size: 0.9375rem;
-  color: var(--ink-3);
-  line-height: 1.55;
-}
 
 .principles {
   display: grid;
@@ -1725,9 +1930,10 @@ section.page {
   border-radius: 14px;
   overflow: hidden;
   isolation: isolate;
-  transition: border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
-              transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    border-color 320ms var(--ease-smooth),
+    transform 420ms var(--ease-spring),
+    box-shadow 320ms var(--ease-smooth);
   display: flex;
   flex-direction: column;
 }
@@ -2256,7 +2462,7 @@ section.page {
 }
 
 /* ═══════════════════════════════════════════════════
-   TIER 3 · PRINT STYLESHEET (이력서처럼 흑백 출력)
+   TIER 3 · PRINT STYLESHEET (흑백 문서 출력)
 ═══════════════════════════════════════════════════ */
 @media print {
   *, *::before, *::after {
@@ -2366,13 +2572,29 @@ section.page {
 }
 
 </style>
+
+<!-- FOUC prevention · theme init before paint -->
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
+
+<!-- Skip to content · a11y keyboard users -->
+<a href="#top" class="skip-link">본문으로 바로 가기</a>
 
 <!-- Side dot navigation (desktop only) -->
 <nav class="side-nav" aria-label="섹션 네비게이션">
   <a href="#top" class="side-nav-dot active" data-label="시작" data-target="top" aria-label="페이지 맨 위로"><span class="sr-only">시작</span></a>
   <a href="#about" class="side-nav-dot" data-label="소개" data-target="about" aria-label="소개 섹션으로 이동"><span class="sr-only">소개</span></a>
+  <a href="#decisions" class="side-nav-dot" data-label="판단" data-target="decisions" aria-label="판단 섹션으로 이동"><span class="sr-only">판단</span></a>
   <a href="#work" class="side-nav-dot" data-label="작업" data-target="work" aria-label="작업 섹션으로 이동"><span class="sr-only">작업</span></a>
   <a href="#craft" class="side-nav-dot" data-label="원칙" data-target="craft" aria-label="원칙 섹션으로 이동"><span class="sr-only">원칙</span></a>
   <a href="#stack" class="side-nav-dot" data-label="스택" data-target="stack" aria-label="스택 섹션으로 이동"><span class="sr-only">스택</span></a>
@@ -2384,12 +2606,17 @@ section.page {
 <header class="header">
   <div class="header-inner">
     <a href="#top" class="header-brand">윤상훈</a>
-    <nav class="header-nav">
+    <nav class="header-nav" aria-label="주 네비게이션">
       <a href="#about" class="nav-link">소개</a>
+      <a href="#decisions" class="nav-link">판단</a>
       <a href="#work" class="nav-link">작업</a>
       <a href="#craft" class="nav-link">원칙</a>
       <a href="#stack" class="nav-link">스택</a>
       <a href="#contact" class="cta">연락</a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="라이트/다크 테마 전환">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -2398,6 +2625,9 @@ section.page {
 
 <!-- HERO -->
 <section class="hero container">
+  <!-- WebGL 3D particle network · tier 4-H (lazy initialized from JS) -->
+  <canvas class="hero-webgl" id="hero-webgl" aria-hidden="true"></canvas>
+
   <!-- Architecture signature: thin line art layer (tier 4-10) -->
   <svg class="hero-signature" aria-hidden="true" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
     <!-- Connection lines -->
@@ -2425,8 +2655,7 @@ section.page {
   </h1>
 
   <p class="hero-sub reveal d2">
-    <strong>AI 빌더 · 풀스택 엔지니어 · AX 강사</strong>.
-    한화오션 엔지니어 3년 4개월, 대치동 컨설팅 4년. React·TypeScript·Supabase·Electron으로
+    한화오션 엔지니어 3년 4개월, 대치동 컨설팅 4년을 거쳐
     <strong>AI 프로덕트 3개를 단독 구축</strong>했고, <strong>1개는 현재 운영 중</strong>입니다.
   </p>
 
@@ -2436,8 +2665,8 @@ section.page {
       <div class="hero-stat-label">Shipped<br>AI Products</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-val" data-count="1">1</div>
-      <div class="hero-stat-label">Live<br>Production</div>
+      <div class="hero-stat-val" data-count="4.36">4.36</div>
+      <div class="hero-stat-label">Univ GPA<br>Rank 1</div>
     </div>
     <div class="hero-stat">
       <div class="hero-stat-val" data-count="4">4</div>
@@ -2987,8 +3216,8 @@ section.page {
                 <text x="48" y="74" font-family="Pretendard, system-ui" font-size="14" font-weight="600" fill="#0a0a0a">원본 영상·주제</text>
               </g>
 
-              <!-- Pipeline arrow -->
-              <line x1="180" y1="59" x2="210" y2="59" stroke="#525252" stroke-width="2" marker-end="url(#arrow-flow-2)"/>
+              <!-- Pipeline arrow (animated — flow indicator) -->
+              <line class="arch-line-flow" x1="180" y1="59" x2="210" y2="59" stroke="#525252" stroke-width="2" marker-end="url(#arrow-flow-2)"/>
 
               <!-- STAGE 1 — Gemini -->
               <g>
@@ -3270,8 +3499,8 @@ section.page {
                 <text x="48" y="366" font-family="Pretendard, system-ui" font-size="11" fill="#525252">electron-updater 자동 업데이트</text>
               </g>
 
-              <!-- accent arrow -->
-              <line x1="240" y1="290" x2="290" y2="290" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrow-accent-3)"/>
+              <!-- accent arrow (animated — BFF flow indicator) -->
+              <line class="arch-line-flow" x1="240" y1="290" x2="290" y2="290" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrow-accent-3)"/>
               <text x="245" y="278" font-family="Pretendard, system-ui" font-size="10" fill="#1d4ed8">토큰만 전송</text>
 
               <!-- Edge Functions proxy -->
@@ -3710,6 +3939,7 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
           <div class="footer-col-label">Navigate</div>
           <ul class="footer-list">
             <li><a href="#about">소개</a></li>
+            <li><a href="#decisions">판단</a></li>
             <li><a href="#work">작업</a></li>
             <li><a href="#craft">원칙</a></li>
             <li><a href="#stack">스택</a></li>
@@ -3727,24 +3957,6 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
         <div class="footer-col">
           <div class="footer-col-label">Elsewhere</div>
           <ul class="footer-list">
-            <li>
-              <a href="https://github.com/hoon7624g-web" target="_blank" rel="noopener noreferrer">
-                GitHub
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/sanghoon-yoon/" target="_blank" rel="noopener noreferrer">
-                LinkedIn
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="./resume.pdf" target="_blank" rel="noopener">
-                이력서 (PDF)
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </li>
             <li>
               <a href="mailto:hoon7624g@gmail.com">
                 Email
@@ -3768,7 +3980,7 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
 
       <div class="footer-bottom">
         <span>© 2026 윤상훈 · All rights reserved · Seoul, Korea</span>
-        <span class="footer-version"><span class="dot" aria-hidden="true"></span>Portfolio v2.1.0 · live</span>
+        <span class="footer-version"><span class="dot" aria-hidden="true"></span>Portfolio v2.4.0 · live</span>
       </div>
     </footer>
   </div>
@@ -3777,6 +3989,230 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
 </main>
 
 <script>
+// ═══════════════════════════════════════════════════
+// Theme toggle · manual light/dark override
+// ═══════════════════════════════════════════════════
+(function() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const root = document.documentElement;
+  const storageKey = 'portfolio-theme';
+
+  function applyTheme(mode) {
+    if (mode === 'dark' || mode === 'light') {
+      root.setAttribute('data-theme', mode);
+      try { localStorage.setItem(storageKey, mode); } catch (e) {}
+    } else {
+      root.removeAttribute('data-theme');
+      try { localStorage.removeItem(storageKey); } catch (e) {}
+    }
+  }
+
+  function getCurrentMode() {
+    const attr = root.getAttribute('data-theme');
+    if (attr === 'dark' || attr === 'light') return attr;
+    // fallback to prefers-color-scheme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  toggle.addEventListener('click', function() {
+    const current = getCurrentMode();
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+})();
+
+// ═══════════════════════════════════════════════════
+// Hero WebGL · 3D particle network (tier 4-H)
+// Respects: prefers-reduced-motion, mobile, intersection visibility
+// ═══════════════════════════════════════════════════
+(function initHeroWebGL() {
+  const canvas = document.getElementById('hero-webgl');
+  if (!canvas) return;
+
+  // Skip if reduced-motion or mobile (CSS also hides, but belt-and-suspenders)
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.innerWidth < 720) return;
+
+  // Wait for Three.js to load (defer script)
+  function waitForThree(attemptsLeft) {
+    if (typeof THREE !== 'undefined') {
+      start();
+    } else if (attemptsLeft > 0) {
+      setTimeout(function() { waitForThree(attemptsLeft - 1); }, 80);
+    }
+    // silent fail if never loads — canvas stays opacity:0 via CSS
+  }
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', function() { waitForThree(40); });
+  } else {
+    waitForThree(40);
+  }
+
+  function start() {
+    const container = canvas.parentElement;
+    if (!container) return;
+
+    // Read accent color from CSS (responsive to light/dark theme)
+    function readAccentColor() {
+      const cs = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      // Convert '#1d4ed8' → 0x1d4ed8
+      return new THREE.Color(cs || '#1d4ed8');
+    }
+
+    const NODE_COUNT = window.innerWidth < 1100 ? 50 : 80;
+    const CONNECT_DIST = 70;
+
+    const scene = new THREE.Scene();
+    const rect = container.getBoundingClientRect();
+    const camera = new THREE.PerspectiveCamera(60, rect.width / Math.max(rect.height, 1), 1, 600);
+    camera.position.z = 180;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: window.devicePixelRatio < 2,
+      powerPreference: 'low-power'
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(rect.width, Math.max(rect.height, 1), false);
+
+    // Nodes (Points)
+    const nodePositions = new Float32Array(NODE_COUNT * 3);
+    const nodeDrift = new Float32Array(NODE_COUNT * 3); // per-node phase offsets
+
+    for (let i = 0; i < NODE_COUNT; i++) {
+      nodePositions[i*3]     = (Math.random() - 0.5) * 260;
+      nodePositions[i*3 + 1] = (Math.random() - 0.5) * 180;
+      nodePositions[i*3 + 2] = (Math.random() - 0.5) * 120;
+      nodeDrift[i*3]     = Math.random() * Math.PI * 2;
+      nodeDrift[i*3 + 1] = Math.random() * Math.PI * 2;
+      nodeDrift[i*3 + 2] = Math.random() * Math.PI * 2;
+    }
+    const nodeGeometry = new THREE.BufferGeometry();
+    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
+    const nodeMaterial = new THREE.PointsMaterial({
+      color: readAccentColor(),
+      size: 2.4,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.85,
+      depthWrite: false
+    });
+    const points = new THREE.Points(nodeGeometry, nodeMaterial);
+    scene.add(points);
+
+    // Lines (connections) — allocate max buffer upfront, update count each frame
+    const maxLineSegments = NODE_COUNT * 6; // upper bound
+    const linePositions = new Float32Array(maxLineSegments * 2 * 3);
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: readAccentColor(),
+      transparent: true,
+      opacity: 0.18,
+      depthWrite: false
+    });
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    scene.add(lines);
+
+    // Mouse parallax (eased)
+    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+    window.addEventListener('pointermove', function(e) {
+      const nx = (e.clientX / window.innerWidth) - 0.5;
+      const ny = (e.clientY / window.innerHeight) - 0.5;
+      targetX = nx * 30;
+      targetY = -ny * 20;
+    }, { passive: true });
+
+    // Resize handling
+    function onResize() {
+      const r = container.getBoundingClientRect();
+      if (r.width < 1 || r.height < 1) return;
+      camera.aspect = r.width / r.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(r.width, r.height, false);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Intersection observer — pause animation when Hero offscreen
+    let visible = true;
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { visible = entry.isIntersecting; });
+    }, { threshold: 0.01 });
+    io.observe(container);
+
+    // Theme change → update colors
+    const mo = new MutationObserver(function() {
+      const c = readAccentColor();
+      nodeMaterial.color = c;
+      lineMaterial.color = c;
+    });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // Animate
+    const clock = new THREE.Clock();
+    const posAttr = nodeGeometry.getAttribute('position');
+    const linePosAttr = lineGeometry.getAttribute('position');
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!visible) return;
+
+      const t = clock.getElapsedTime();
+
+      // Drift each node in a slow sine pattern
+      for (let i = 0; i < NODE_COUNT; i++) {
+        const i3 = i * 3;
+        posAttr.array[i3]     += Math.sin(t * 0.3 + nodeDrift[i3])     * 0.05;
+        posAttr.array[i3 + 1] += Math.cos(t * 0.27 + nodeDrift[i3 + 1]) * 0.05;
+        posAttr.array[i3 + 2] += Math.sin(t * 0.23 + nodeDrift[i3 + 2]) * 0.04;
+      }
+      posAttr.needsUpdate = true;
+
+      // Rebuild line connections within threshold distance
+      let segCount = 0;
+      for (let i = 0; i < NODE_COUNT; i++) {
+        for (let j = i + 1; j < NODE_COUNT; j++) {
+          const dx = posAttr.array[i*3]   - posAttr.array[j*3];
+          const dy = posAttr.array[i*3+1] - posAttr.array[j*3+1];
+          const dz = posAttr.array[i*3+2] - posAttr.array[j*3+2];
+          const d2 = dx*dx + dy*dy + dz*dz;
+          if (d2 < CONNECT_DIST * CONNECT_DIST && segCount < maxLineSegments) {
+            const off = segCount * 6;
+            linePosAttr.array[off]     = posAttr.array[i*3];
+            linePosAttr.array[off + 1] = posAttr.array[i*3 + 1];
+            linePosAttr.array[off + 2] = posAttr.array[i*3 + 2];
+            linePosAttr.array[off + 3] = posAttr.array[j*3];
+            linePosAttr.array[off + 4] = posAttr.array[j*3 + 1];
+            linePosAttr.array[off + 5] = posAttr.array[j*3 + 2];
+            segCount++;
+          }
+        }
+      }
+      lineGeometry.setDrawRange(0, segCount * 2);
+      linePosAttr.needsUpdate = true;
+
+      // Camera parallax toward mouse target
+      mouseX += (targetX - mouseX) * 0.03;
+      mouseY += (targetY - mouseY) * 0.03;
+      camera.position.x = mouseX;
+      camera.position.y = mouseY;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+
+    // Fade in canvas once first frame is ready
+    requestAnimationFrame(function() {
+      canvas.classList.add('ready');
+      animate();
+    });
+  }
+})();
+
 // ═══════════════════════════════════════════════════
 // Header scroll state
 // ═══════════════════════════════════════════════════
@@ -3898,12 +4334,16 @@ function animateCountUp(el, target, suffix, duration) {
     return;
   }
   const start = performance.now();
+  // Support decimal targets (e.g., 4.36 GPA)
+  const targetNum = typeof target === 'number' ? target : parseFloat(target);
+  const decimals = (targetNum.toString().split('.')[1] || '').length;
   function tick(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
     // ease-out quart (matches cubic-bezier(0.16, 1, 0.3, 1))
     const eased = 1 - Math.pow(1 - progress, 4);
-    const current = Math.floor(eased * target);
+    const raw = eased * targetNum;
+    const current = decimals > 0 ? raw.toFixed(decimals) : Math.floor(raw);
     if (suffix) {
       el.innerHTML = current + '<span class="unit">' + suffix + '</span>';
     } else {
@@ -3920,7 +4360,7 @@ if (countEls.length) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.getAttribute('data-count'), 10);
+        const target = parseFloat(el.getAttribute('data-count'));
         const suffix = el.getAttribute('data-suffix') || '';
         animateCountUp(el, target, suffix, 1700);
         countObserver.unobserve(el);
