@@ -40,8 +40,7 @@
 <!-- Canonical & SEO -->
 <link rel="canonical" href="https://hoon7624g-web.github.io/portfolio/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#fafafa">
 <meta name="format-detection" content="telephone=no">
 
 <!-- Favicon · multi-format for best platform support -->
@@ -237,51 +236,8 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   DARK MODE · auto via prefers-color-scheme OR manual via [data-theme]
+   LIGHT MODE ONLY · dark mode removed
 ═══════════════════════════════════════════════════ */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg:            #0a0a0a;
-    --surface:       #141416;
-    --surface-alt:   #1c1c1f;
-    --ink:           #fafafa;
-    --ink-2:         #d4d4d3;
-    --ink-3:         #a3a3a3;
-    --ink-4:         #737373;
-    --ink-5:         #525252;
-    --hairline:      #262626;
-    --hairline-dark: #3a3a3a;
-    --accent:        #60a5fa;
-    --accent-hover:  #93c5fd;
-    --accent-soft:   rgba(96, 165, 250, 0.12);
-    --dark-bg:       #000000;
-    --dark-bg-2:     #0a0a0a;
-    --grid-line:     rgba(250, 250, 250, 0.05);
-    --noise-blend:   screen;
-    --shadow-ink:    0, 0, 0;
-  }
-}
-/* Manual override — wins over prefers-color-scheme */
-:root[data-theme="dark"] {
-  --bg:            #0a0a0a;
-  --surface:       #141416;
-  --surface-alt:   #1c1c1f;
-  --ink:           #fafafa;
-  --ink-2:         #d4d4d3;
-  --ink-3:         #a3a3a3;
-  --ink-4:         #737373;
-  --ink-5:         #525252;
-  --hairline:      #262626;
-  --hairline-dark: #3a3a3a;
-  --accent:        #60a5fa;
-  --accent-hover:  #93c5fd;
-  --accent-soft:   rgba(96, 165, 250, 0.12);
-  --dark-bg:       #000000;
-  --dark-bg-2:     #0a0a0a;
-  --grid-line:     rgba(250, 250, 250, 0.05);
-  --noise-blend:   screen;
-  --shadow-ink:    0, 0, 0;
-}
 
 html {
   scroll-behavior: smooth;
@@ -463,9 +419,6 @@ section[id] { scroll-margin-top: 5rem; }
 /* color-mix() fallback (for browsers that support backdrop but not color-mix) */
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) and (not (background: color-mix(in srgb, white, transparent))) {
   .header { background: rgba(250, 250, 250, 0.82); }
-  @media (prefers-color-scheme: dark) {
-    .header { background: rgba(10, 10, 10, 0.82); }
-  }
 }
 .header.scrolled { border-bottom-color: var(--hairline); }
 .header-inner {
@@ -477,51 +430,6 @@ section[id] { scroll-margin-top: 5rem; }
   align-items: center;
 }
 
-/* Theme toggle button · manual dark/light override */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  margin-left: 0.75rem;
-  border: 1px solid var(--hairline);
-  background: transparent;
-  color: var(--ink-3);
-  border-radius: 999px;
-  cursor: pointer;
-  padding: 0;
-  transition:
-    background 0.28s var(--ease-smooth),
-    color 0.28s var(--ease-smooth),
-    border-color 0.28s var(--ease-smooth),
-    transform 0.4s var(--ease-spring);
-}
-.theme-toggle:hover {
-  color: var(--ink);
-  border-color: var(--ink-5);
-  transform: translateY(-1px);
-}
-.theme-toggle svg {
-  width: 16px;
-  height: 16px;
-  stroke-width: 2;
-}
-.theme-toggle .sun-icon { display: none; }
-.theme-toggle .moon-icon { display: block; }
-/* In dark mode (auto or manual), flip icons */
-:root[data-theme="dark"] .theme-toggle .sun-icon,
-:root[data-theme="dark"] .theme-toggle .moon-icon { /* overridden below */ }
-:root[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
-:root[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .sun-icon { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .moon-icon { display: none; }
-}
-@media (max-width: 560px) {
-  .theme-toggle { width: 32px; height: 32px; margin-left: 0.5rem; }
-  .theme-toggle svg { width: 14px; height: 14px; }
-}
 .header-brand {
   display: flex;
   align-items: center;
@@ -1429,7 +1337,7 @@ section.page {
 
 .principles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   background: var(--hairline);
   border: 1px solid var(--hairline);
   border-radius: 16px;
@@ -1437,7 +1345,6 @@ section.page {
   margin-bottom: 5rem;
   gap: 1px;
 }
-@media (max-width: 900px) { .principles { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .principles { grid-template-columns: 1fr; } }
 
 .principle {
@@ -1520,11 +1427,6 @@ section.page {
   color: var(--ink-4);
   font-weight: 400;
   margin-left: 0.35rem;
-}
-
-/* Wide stat — 가로 전체 차지 (배경/색상은 다른 셀과 동일) */
-.comm-stat.comm-stat-wide {
-  grid-column: 1 / -1;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -2573,17 +2475,6 @@ section.page {
 
 </style>
 
-<!-- FOUC prevention · theme init before paint -->
-<script>
-(function() {
-  try {
-    var saved = localStorage.getItem('portfolio-theme');
-    if (saved === 'dark' || saved === 'light') {
-      document.documentElement.setAttribute('data-theme', saved);
-    }
-  } catch (e) {}
-})();
-</script>
 </head>
 <body>
 
@@ -2613,10 +2504,6 @@ section.page {
       <a href="#craft" class="nav-link">원칙</a>
       <a href="#stack" class="nav-link">스택</a>
       <a href="#contact" class="cta">연락</a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="라이트/다크 테마 전환">
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      </button>
     </nav>
   </div>
 </header>
@@ -3754,7 +3641,7 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
         <span class="comm-stat-k">교내 성적장학금</span>
         <span class="comm-stat-v">4회<span class="sub">수석 3 · 차석 1</span></span>
       </div>
-      <div class="comm-stat comm-stat-wide">
+      <div class="comm-stat">
         <span class="comm-stat-k">한국장학재단 이공계장학금</span>
         <span class="comm-stat-v">3·4학년 전액 수혜</span>
       </div>
@@ -3990,40 +3877,6 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
 
 <script>
 // ═══════════════════════════════════════════════════
-// Theme toggle · manual light/dark override
-// ═══════════════════════════════════════════════════
-(function() {
-  const toggle = document.getElementById('theme-toggle');
-  if (!toggle) return;
-
-  const root = document.documentElement;
-  const storageKey = 'portfolio-theme';
-
-  function applyTheme(mode) {
-    if (mode === 'dark' || mode === 'light') {
-      root.setAttribute('data-theme', mode);
-      try { localStorage.setItem(storageKey, mode); } catch (e) {}
-    } else {
-      root.removeAttribute('data-theme');
-      try { localStorage.removeItem(storageKey); } catch (e) {}
-    }
-  }
-
-  function getCurrentMode() {
-    const attr = root.getAttribute('data-theme');
-    if (attr === 'dark' || attr === 'light') return attr;
-    // fallback to prefers-color-scheme
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  toggle.addEventListener('click', function() {
-    const current = getCurrentMode();
-    const next = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-  });
-})();
-
-// ═══════════════════════════════════════════════════
 // Hero WebGL · 3D particle network (tier 4-H)
 // Respects: prefers-reduced-motion, mobile, intersection visibility
 // ═══════════════════════════════════════════════════
@@ -4143,14 +3996,6 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
       entries.forEach(function(entry) { visible = entry.isIntersecting; });
     }, { threshold: 0.01 });
     io.observe(container);
-
-    // Theme change → update colors
-    const mo = new MutationObserver(function() {
-      const c = readAccentColor();
-      nodeMaterial.color = c;
-      lineMaterial.color = c;
-    });
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     // Animate
     const clock = new THREE.Clock();
