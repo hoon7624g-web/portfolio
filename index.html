@@ -1324,6 +1324,100 @@ section.page {
   font-weight: 500;
 }
 
+/* ─── Lecture sample (Work 04) — thumbnails + download buttons ─── */
+.lecture-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.875rem;
+  margin: 1.25rem 0 0.875rem;
+}
+
+@media (max-width: 700px) {
+  .lecture-thumbs { grid-template-columns: 1fr; }
+}
+
+.lecture-thumb {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.lecture-thumb:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.lecture-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--surface-alt);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.lecture-thumb-cap {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.lecture-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.lecture-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.875rem;
+  background: var(--surface);
+  border: 1px solid var(--hairline-dark);
+  border-radius: 6px;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.lecture-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.lecture-btn.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+}
+
+.lecture-btn.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.lecture-btn-icon {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
 /* ═══════════════════════════════════════════════════
    CRAFT
 ═══════════════════════════════════════════════════ */
@@ -2813,7 +2907,7 @@ section.page {
       <article class="project reveal">
         <div class="project-header">
           <div class="project-header-left">
-            <div class="project-index">Work · 01 / 03</div>
+            <div class="project-index">Work · 01 / 04</div>
             <h3 class="project-title">실시간 매칭 웹앱</h3>
             <div class="project-version">React 19 + Supabase · 오프라인 매칭 이벤트</div>
           </div>
@@ -3041,7 +3135,7 @@ section.page {
       <article class="project reveal">
         <div class="project-header">
           <div class="project-header-left">
-            <div class="project-index">Work · 02 / 03</div>
+            <div class="project-index">Work · 02 / 04</div>
             <h3 class="project-title">멀티 AI 영상 제작 데스크톱 앱</h3>
             <div class="project-version">Electron 40 + Remotion · 멀티 LLM 파이프라인</div>
           </div>
@@ -3258,7 +3352,7 @@ section.page {
       <article class="project reveal">
         <div class="project-header">
           <div class="project-header-left">
-            <div class="project-index">Work · 03 / 03</div>
+            <div class="project-index">Work · 03 / 04</div>
             <h3 class="project-title">SNS 트렌드 데이터 수집·분석 데스크톱 앱</h3>
             <div class="project-version">Electron 40 + Supabase Edge Functions · BFF 프록시 아키텍처</div>
           </div>
@@ -3479,6 +3573,143 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
             <span class="chip">YouTube Data API</span>
             <span class="chip">electron-updater</span>
             <span class="chip">NSIS + DMG</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ════════════════════════════════════════════════════════════
+           WORK · 04 / 04 — Teaching Materials (시니어 엔지니어의 전달 근육 증명)
+           ════════════════════════════════════════════════════════════ -->
+      <article class="project reveal">
+        <div class="project-header">
+          <div class="project-header-left">
+            <div class="project-index">Work · 04 / 04</div>
+            <h3 class="project-title">AX·AI 활용 강의 콘텐츠 2편</h3>
+            <div class="project-version">90분 강의안 · 메인 13장 + 심화 20장 · 1페이지 요약 · 단독 설계·디자인</div>
+          </div>
+          <div class="project-badges">
+            <span class="badge accent">Sample</span>
+            <span class="badge">콘텐츠 제작 · 2026</span>
+          </div>
+        </div>
+
+        <p class="project-lede">
+          시니어 엔지니어가 하는 일의 절반은 <strong>본인이 만든 시스템을 다른 사람의 언어로 옮기는 것</strong>입니다.
+          신규 입사자 온보딩, 비기술 임원 보고, 외부 협력사 설명, 채용 인터뷰의 시스템 디자인 — 모두 같은 근육.
+          <strong>Work 01~03의 직접 구축·운영 경험</strong>을 비개발 실무자·팀 리더 대상 강의 콘텐츠 2편으로 옮긴 작업이며,
+          슬라이드 디자인·정보 구조·전달 톤까지 외부 디자이너 없이 단독 빌드했습니다.
+        </p>
+
+        <div class="project-metrics">
+          <div class="metric">
+            <span class="metric-val">2</span>
+            <span class="metric-label">Curricula<br>메인 + 심화</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">33</span>
+            <span class="metric-label">Slides Total<br>13 + 20</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">90<span class="unit">×2</span></span>
+            <span class="metric-label">Minutes Each<br>강의 + 워크숍</span>
+          </div>
+        </div>
+
+        <div class="project-body">
+
+          <h4>Why this work belongs in an engineering portfolio</h4>
+          <p>
+            엔지니어로 일할수록 <strong>코드보다 설명이 더 어려워지는 순간</strong>이 늘어납니다.
+            아키텍처 판단을 비기술 의사결정자에게 풀어내는 일, 신규 입사자가 30분 안에 시스템 멘탈 모델을 만들 수 있게 하는 일,
+            인터뷰에서 시스템 디자인을 그리며 설명하는 일 — 모두 같은 근육을 씁니다.
+            이 두 강의안은 그 근육이 <strong>실제 결과물 단위로 출력 가능하다</strong>는 증거이며,
+            Work 03의 BFF 프록시 같은 아키텍처 판단을 비개발자가 이해 가능한 수준으로 풀어내는 작업의 연장선입니다.
+          </p>
+
+          <!-- Sample 01 · Main -->
+          <h4>Sample 01 · 생성형 AI를 내 업무에 넣는 법 — 4가지 질문</h4>
+          <p>
+            도구를 고르기 전에 업무를 네 가지 질문(반복 식별 / 목적 재정의 / Human-in-the-loop / 시작점 선택)으로 쪼개는 사고 틀.
+            <strong>90분 13장 슬라이드</strong>, 비개발 실무자·팀 리더·공공기관 담당자 공통.
+            한 슬라이드 한 메시지 원칙으로 인지 부하를 최소화한 구조.
+          </p>
+
+          <div class="lecture-thumbs">
+            <a href="lecture-main.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="main-slide-cover.jpg" alt="메인 강의안 표지 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">01 · Cover</span>
+            </a>
+            <a href="lecture-main.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="main-slide-framework.jpg" alt="업무를 쪼개는 4가지 질문 프레임워크 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">06 · Framework</span>
+            </a>
+            <a href="lecture-main.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="main-slide-applied.jpg" alt="실제 적용 사례 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">11 · Applied</span>
+            </a>
+          </div>
+
+          <div class="lecture-ctas">
+            <a href="lecture-main.pptx" class="lecture-btn primary" download>
+              <span class="lecture-btn-icon">↓</span>
+              <span class="lecture-btn-text">PPT · 13 슬라이드</span>
+            </a>
+            <a href="lecture-main.pdf" class="lecture-btn" target="_blank" rel="noopener">
+              <span class="lecture-btn-icon">↗</span>
+              <span class="lecture-btn-text">PDF 미리보기</span>
+            </a>
+          </div>
+
+          <!-- Sample 02 · Deep -->
+          <h4>Sample 02 · LLM 기반 영상·콘텐츠 자동화 파이프라인 설계</h4>
+          <p>
+            <strong>Work 02의 영상 자동화 앱 운영 경험을 그대로 교안화</strong>한 심화 트랙.
+            멀티 LLM 오케스트레이션, 단계별 실패 모드, Human-in-the-loop 배치 기준,
+            절감 시간·API 비용·운영 오버헤드·사고 기댓값까지 포함한 도입 ROI 1차 추정 워크드.
+            <strong>90분 20장</strong>.
+          </p>
+
+          <div class="lecture-thumbs">
+            <a href="lecture-deep.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="simhwa-slide-cover.jpg" alt="심화 강의안 표지 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">01 · Cover</span>
+            </a>
+            <a href="lecture-deep.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="simhwa-slide-pipeline.jpg" alt="6단계 파이프라인 다이어그램 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">07 · Pipeline</span>
+            </a>
+            <a href="lecture-deep.pdf" target="_blank" rel="noopener" class="lecture-thumb">
+              <img src="simhwa-slide-roi.jpg" alt="도입 ROI 1차 추정 슬라이드" loading="lazy">
+              <span class="lecture-thumb-cap">15 · ROI</span>
+            </a>
+          </div>
+
+          <div class="lecture-ctas">
+            <a href="lecture-deep.pptx" class="lecture-btn primary" download>
+              <span class="lecture-btn-icon">↓</span>
+              <span class="lecture-btn-text">PPT · 20 슬라이드</span>
+            </a>
+            <a href="lecture-deep.pdf" class="lecture-btn" target="_blank" rel="noopener">
+              <span class="lecture-btn-icon">↗</span>
+              <span class="lecture-btn-text">PDF 미리보기</span>
+            </a>
+            <a href="Lecture-Summary-1page.pdf" class="lecture-btn" target="_blank" rel="noopener">
+              <span class="lecture-btn-icon">↗</span>
+              <span class="lecture-btn-text">1페이지 요약</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="stack">
+          <div class="stack-label">Output Format</div>
+          <div class="stack-chips">
+            <span class="chip">PowerPoint</span>
+            <span class="chip">PDF</span>
+            <span class="chip">1-Page Summary</span>
+            <span class="chip">90 min · per session</span>
+            <span class="chip">Pretendard Typography</span>
+            <span class="chip">단독 설계·디자인</span>
           </div>
         </div>
       </article>
