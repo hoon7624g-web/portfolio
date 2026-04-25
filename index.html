@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 
 <!-- Three.js · lazy loaded for Hero WebGL particle network (tier 4-H) -->
-<script defer src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
 
 <!-- Canonical & SEO -->
 <link rel="canonical" href="https://hoon7624g-web.github.io/portfolio/">
@@ -565,79 +565,13 @@ section.page {
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 40%, transparent 90%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, black 40%, transparent 90%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 8%;
-  left: -5%;
-  width: 45%;
-  height: 50%;
-  z-index: -1;
-  background: radial-gradient(circle at 30% 40%, rgba(29, 78, 216, 0.06), transparent 70%);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, black 30%, transparent 85%);
+  opacity: 0.6;
   pointer-events: none;
 }
 
-/* ═══════════════════════════════════════════════════
-   HERO WEBGL PARTICLE NETWORK — 4th layer (tier 4-H)
-═══════════════════════════════════════════════════ */
-.hero-webgl {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1.2s var(--ease-out-quart);
-  mask-image: radial-gradient(ellipse 80% 70% at 35% 45%, black 20%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 35% 45%, black 20%, transparent 85%);
-}
-.hero-webgl.ready { opacity: 0.7; }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-webgl { display: none !important; }
-}
-@media (max-width: 720px) {
-  .hero-webgl { display: none !important; }
-}
-
-/* ═══════════════════════════════════════════════════
-   HERO ARCHITECTURE SIGNATURE — 3rd layer (tier 4-10)
-═══════════════════════════════════════════════════ */
-.hero-signature {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.75;
-  overflow: visible;
-  color: var(--accent); /* Used via currentColor in child elements for dark-mode reactivity */
-  mask-image: radial-gradient(ellipse 70% 60% at 35% 40%, black 50%, transparent 92%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 35% 40%, black 50%, transparent 92%);
-}
-.hero-signature .node-stroke { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.35; }
-.hero-signature .node-center { fill: currentColor; opacity: 0.5; }
-.hero-signature .link-static { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.2; }
-.hero-signature .link-flow   { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.35; stroke-dasharray: 4 6; animation: hero-sig-flow 10s linear infinite; }
-
-@keyframes hero-sig-flow {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -40; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-signature .link-flow { animation: none; }
-}
-@media (max-width: 720px) {
-  .hero-signature { display: none; }
-}
 
 .hero-eyebrow {
   display: inline-flex;
@@ -2647,28 +2581,6 @@ section.page {
 
 <!-- HERO -->
 <section class="hero container">
-  <!-- WebGL 3D particle network · tier 4-H (lazy initialized from JS) -->
-  <canvas class="hero-webgl" id="hero-webgl" aria-hidden="true"></canvas>
-
-  <!-- Architecture signature: thin line art layer (tier 4-10) -->
-  <svg class="hero-signature" aria-hidden="true" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
-    <!-- Connection lines -->
-    <line class="link-static" x1="108" y1="120" x2="412" y2="280"/>
-    <line class="link-static" x1="268" y1="180" x2="412" y2="280"/>
-    <line class="link-flow"   x1="432" y1="280" x2="610" y2="340"/>
-
-    <!-- Nodes -->
-    <!-- N1 client A -->
-    <circle class="node-stroke" cx="100" cy="120" r="8"/>
-    <!-- N2 client B -->
-    <circle class="node-stroke" cx="260" cy="180" r="8"/>
-    <!-- N3 proxy (hub, larger + inner dot) -->
-    <circle class="node-stroke" cx="420" cy="280" r="12"/>
-    <circle class="node-center" cx="420" cy="280" r="2"/>
-    <!-- N4 service/database -->
-    <circle class="node-stroke" cx="620" cy="340" r="8"/>
-  </svg>
-
   <div class="hero-eyebrow reveal">Available · Seoul, Korea</div>
 
   <h1 class="hero-title hero-title-split reveal d1">
@@ -4135,187 +4047,6 @@ Deno.<span class="tk-n">serve</span>(<span class="tk-k">async</span> (<span clas
 </main>
 
 <script>
-// ═══════════════════════════════════════════════════
-// Hero WebGL · 3D particle network (tier 4-H)
-// Respects: prefers-reduced-motion, mobile, intersection visibility
-// ═══════════════════════════════════════════════════
-(function initHeroWebGL() {
-  const canvas = document.getElementById('hero-webgl');
-  if (!canvas) return;
-
-  // Skip if reduced-motion or mobile (CSS also hides, but belt-and-suspenders)
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.innerWidth < 720) return;
-
-  // Wait for Three.js to load (defer script)
-  function waitForThree(attemptsLeft) {
-    if (typeof THREE !== 'undefined') {
-      start();
-    } else if (attemptsLeft > 0) {
-      setTimeout(function() { waitForThree(attemptsLeft - 1); }, 80);
-    }
-    // silent fail if never loads — canvas stays opacity:0 via CSS
-  }
-  if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', function() { waitForThree(40); });
-  } else {
-    waitForThree(40);
-  }
-
-  function start() {
-    const container = canvas.parentElement;
-    if (!container) return;
-
-    // Read accent color from CSS (responsive to light/dark theme)
-    function readAccentColor() {
-      const cs = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-      // Convert '#1d4ed8' → 0x1d4ed8
-      return new THREE.Color(cs || '#1d4ed8');
-    }
-
-    const NODE_COUNT = window.innerWidth < 1100 ? 50 : 80;
-    const CONNECT_DIST = 70;
-
-    const scene = new THREE.Scene();
-    const rect = container.getBoundingClientRect();
-    const camera = new THREE.PerspectiveCamera(60, rect.width / Math.max(rect.height, 1), 1, 600);
-    camera.position.z = 180;
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      alpha: true,
-      antialias: window.devicePixelRatio < 2,
-      powerPreference: 'low-power'
-    });
-    renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(rect.width, Math.max(rect.height, 1), false);
-
-    // Nodes (Points)
-    const nodePositions = new Float32Array(NODE_COUNT * 3);
-    const nodeDrift = new Float32Array(NODE_COUNT * 3); // per-node phase offsets
-
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodePositions[i*3]     = (Math.random() - 0.5) * 260;
-      nodePositions[i*3 + 1] = (Math.random() - 0.5) * 180;
-      nodePositions[i*3 + 2] = (Math.random() - 0.5) * 120;
-      nodeDrift[i*3]     = Math.random() * Math.PI * 2;
-      nodeDrift[i*3 + 1] = Math.random() * Math.PI * 2;
-      nodeDrift[i*3 + 2] = Math.random() * Math.PI * 2;
-    }
-    const nodeGeometry = new THREE.BufferGeometry();
-    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
-    const nodeMaterial = new THREE.PointsMaterial({
-      color: readAccentColor(),
-      size: 2.4,
-      sizeAttenuation: true,
-      transparent: true,
-      opacity: 0.85,
-      depthWrite: false
-    });
-    const points = new THREE.Points(nodeGeometry, nodeMaterial);
-    scene.add(points);
-
-    // Lines (connections) — allocate max buffer upfront, update count each frame
-    const maxLineSegments = NODE_COUNT * 6; // upper bound
-    const linePositions = new Float32Array(maxLineSegments * 2 * 3);
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-    const lineMaterial = new THREE.LineBasicMaterial({
-      color: readAccentColor(),
-      transparent: true,
-      opacity: 0.18,
-      depthWrite: false
-    });
-    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-    scene.add(lines);
-
-    // Mouse parallax (eased)
-    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-    window.addEventListener('pointermove', function(e) {
-      const nx = (e.clientX / window.innerWidth) - 0.5;
-      const ny = (e.clientY / window.innerHeight) - 0.5;
-      targetX = nx * 30;
-      targetY = -ny * 20;
-    }, { passive: true });
-
-    // Resize handling
-    function onResize() {
-      const r = container.getBoundingClientRect();
-      if (r.width < 1 || r.height < 1) return;
-      camera.aspect = r.width / r.height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(r.width, r.height, false);
-    }
-    window.addEventListener('resize', onResize, { passive: true });
-
-    // Intersection observer — pause animation when Hero offscreen
-    let visible = true;
-    const io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) { visible = entry.isIntersecting; });
-    }, { threshold: 0.01 });
-    io.observe(container);
-
-    // Animate
-    const clock = new THREE.Clock();
-    const posAttr = nodeGeometry.getAttribute('position');
-    const linePosAttr = lineGeometry.getAttribute('position');
-
-    function animate() {
-      requestAnimationFrame(animate);
-      if (!visible) return;
-
-      const t = clock.getElapsedTime();
-
-      // Drift each node in a slow sine pattern
-      for (let i = 0; i < NODE_COUNT; i++) {
-        const i3 = i * 3;
-        posAttr.array[i3]     += Math.sin(t * 0.3 + nodeDrift[i3])     * 0.05;
-        posAttr.array[i3 + 1] += Math.cos(t * 0.27 + nodeDrift[i3 + 1]) * 0.05;
-        posAttr.array[i3 + 2] += Math.sin(t * 0.23 + nodeDrift[i3 + 2]) * 0.04;
-      }
-      posAttr.needsUpdate = true;
-
-      // Rebuild line connections within threshold distance
-      let segCount = 0;
-      for (let i = 0; i < NODE_COUNT; i++) {
-        for (let j = i + 1; j < NODE_COUNT; j++) {
-          const dx = posAttr.array[i*3]   - posAttr.array[j*3];
-          const dy = posAttr.array[i*3+1] - posAttr.array[j*3+1];
-          const dz = posAttr.array[i*3+2] - posAttr.array[j*3+2];
-          const d2 = dx*dx + dy*dy + dz*dz;
-          if (d2 < CONNECT_DIST * CONNECT_DIST && segCount < maxLineSegments) {
-            const off = segCount * 6;
-            linePosAttr.array[off]     = posAttr.array[i*3];
-            linePosAttr.array[off + 1] = posAttr.array[i*3 + 1];
-            linePosAttr.array[off + 2] = posAttr.array[i*3 + 2];
-            linePosAttr.array[off + 3] = posAttr.array[j*3];
-            linePosAttr.array[off + 4] = posAttr.array[j*3 + 1];
-            linePosAttr.array[off + 5] = posAttr.array[j*3 + 2];
-            segCount++;
-          }
-        }
-      }
-      lineGeometry.setDrawRange(0, segCount * 2);
-      linePosAttr.needsUpdate = true;
-
-      // Camera parallax toward mouse target
-      mouseX += (targetX - mouseX) * 0.03;
-      mouseY += (targetY - mouseY) * 0.03;
-      camera.position.x = mouseX;
-      camera.position.y = mouseY;
-      camera.lookAt(0, 0, 0);
-
-      renderer.render(scene, camera);
-    }
-
-    // Fade in canvas once first frame is ready
-    requestAnimationFrame(function() {
-      canvas.classList.add('ready');
-      animate();
-    });
-  }
-})();
 
 // ═══════════════════════════════════════════════════
 // Header scroll state
